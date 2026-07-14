@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بطولة السلامة السابعة والعشرين بحلي 2026</title>
-    <!-- استدعاء خط Tajawal الأنيق من جوجل -->
+    <title>بطولة السلامة 27 | حلي</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary-color: #800020; /* عنابي دافئ مستوحى من البوستر */
-            --secondary-color: #d4af37; /* ذهبي أنيق */
-            --dark-color: #1a1a1a;
-            --light-bg: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-color: #333333;
-            --text-muted: #777777;
-            --success-color: #2ecc71;
+            --bg-color: #0f0f12;       /* أسود مطفي فخم خلفية أساسية */
+            --card-color: #1a1a22;     /* رمادي داكن للبطاقات والتبويبات */
+            --accent-color: #d4af37;   /* ذهبي للتميز والنصوص الهامة */
+            --primary-light: #bc2a45;  /* عنابي رياضي */
+            --text-main: #ffffff;      /* أبيض ناصع للنصوص */
+            --text-muted: #a0a0ab;     /* رمادي فاتح للنصوص الفرعية */
+            --success: #2ecc71;        /* أخضر للمباريات المنتهية */
+            --live: #e74c3c;           /* أحمر للمباشر */
         }
 
         * {
@@ -26,877 +26,700 @@
             margin: 0;
             padding: 0;
             font-family: 'Tajawal', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background-color: var(--light-bg);
-            color: var(--text-color);
+            background-color: var(--bg-color);
+            color: var(--text-main);
             line-height: 1.6;
-            padding-bottom: 40px;
+            padding-bottom: 90px; /* مساحة لعدم تغطية المحتوى بالشريط السفلي */
         }
 
-        /* الهيدر والبوتسر */
+        /* الهيدر العلوي الصغير النظيف */
         header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #4a0012 100%);
-            color: white;
+            background-color: var(--card-color);
+            padding: 20px 15px;
             text-align: center;
-            padding: 40px 20px;
-            border-bottom: 5px solid var(--secondary-color);
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 10.01%);
-            background-size: 20px 20px;
-            opacity: 0.3;
-        }
-
-        .header-title {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .header-subtitle {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--secondary-color);
-            margin-bottom: 5px;
-        }
-
-        .header-meta {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            background: rgba(0, 0, 0, 0.2);
-            display: inline-block;
-            padding: 6px 15px;
-            border-radius: 20px;
-            margin-top: 10px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        /* شريط التبويبات */
-        .nav-tabs {
-            display: flex;
-            justify-content: center;
-            background-color: var(--dark-color);
+            border-bottom: 1px solid #2d2d3d;
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            overflow-x: auto;
-            white-space: nowrap;
+            z-index: 99;
         }
 
-        .tab-btn {
-            background: none;
-            border: none;
-            color: #b0b0b0;
-            padding: 15px 25px;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
+        header h1 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-main);
         }
 
-        .tab-btn:hover {
-            color: white;
+        header p {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            margin-top: 2px;
+            font-weight: 500;
         }
 
-        .tab-btn.active {
-            color: var(--secondary-color);
-        }
-
-        .tab-btn.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background-color: var(--secondary-color);
-        }
-
-        /* الحاوية الرئيسية */
         .container {
-            max-width: 900px;
-            margin: 30px auto;
+            max-width: 700px;
+            margin: 20px auto;
             padding: 0 15px;
         }
 
+        /* محتوى التبويبات */
         .tab-content {
             display: none;
         }
 
         .tab-content.active {
             display: block;
-            animation: fadeIn 0.5s ease;
+            animation: appFade 0.3s ease-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+        @keyframes appFade {
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* الإحصائيات السريعة / العد التنازلي */
-        .countdown-box {
-            background: linear-gradient(135deg, #2c3e50, #1a252f);
-            color: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 25px;
+        /* شريط التنازلي للمباراة القادمة */
+        .countdown-widget {
+            background: linear-gradient(135deg, #1e1e2f 0%, #13131f 100%);
+            border: 1px solid #34344d;
+            border-radius: 14px;
+            padding: 15px;
+            margin-bottom: 20px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border: 1px solid #34495e;
         }
 
         .countdown-title {
-            font-size: 1rem;
-            color: var(--secondary-color);
-            margin-bottom: 10px;
+            font-size: 0.85rem;
+            color: var(--accent-color);
             font-weight: 700;
+            margin-bottom: 10px;
         }
 
-        .countdown-timer {
+        .timer-display {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             direction: ltr;
         }
 
-        .timer-unit {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px 15px;
+        .time-block {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 12px;
             border-radius: 8px;
-            min-width: 65px;
+            min-width: 55px;
+            border: 1px solid #2a2a3a;
         }
 
-        .timer-num {
-            font-size: 1.5rem;
-            font-weight: 700;
+        .time-num {
+            font-size: 1.2rem;
+            font-weight: 800;
             color: #fff;
             display: block;
         }
 
-        .timer-label {
-            font-size: 0.75rem;
-            color: #bdc3c7;
+        .time-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
         }
 
-        /* الفلتر الفرعي داخل جدول المباريات */
-        .sub-filters {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
+        /* أقسام الأيام والبطاقات */
+        .day-group {
             margin-bottom: 25px;
         }
 
-        .filter-btn {
-            background-color: #eaeaea;
-            border: none;
-            padding: 8px 18px;
-            border-radius: 20px;
+        .day-title {
+            font-size: 0.95rem;
             font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 0.9rem;
-            color: #555;
-        }
-
-        .filter-btn.active {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        /* بطاقات المباريات */
-        .day-section {
-            margin-bottom: 35px;
-        }
-
-        .day-header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            color: var(--text-muted);
+            margin-bottom: 12px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-        }
-
-        .day-header span.badge {
-            background-color: var(--secondary-color);
-            color: var(--dark-color);
-            font-size: 0.8rem;
-            padding: 3px 10px;
-            border-radius: 12px;
+            gap: 6px;
         }
 
         .match-card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border-right: 5px solid #bdc3c7;
-            transition: transform 0.2s, box-shadow 0.2s;
-            position: relative;
-        }
-
-        .match-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.10);
-        }
-
-        .match-card.upcoming {
-            border-right-color: #3498db;
-        }
-
-        .match-card.live {
-            border-right-color: #e74c3c;
-            animation: pulse-border 1.5s infinite;
-        }
-
-        @keyframes pulse-border {
-            0% { border-right-color: #e74c3c; }
-            50% { border-right-color: #f1c40f; }
-            100% { border-right-color: #e74c3c; }
-        }
-
-        .match-card.completed {
-            border-right-color: var(--success-color);
-            background-color: #fafafa;
-        }
-
-        .match-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85rem;
-            color: var(--text-muted);
+            background-color: var(--card-color);
+            border-radius: 14px;
+            padding: 16px;
             margin-bottom: 12px;
-            border-bottom: 1px dashed #eee;
-            padding-bottom: 8px;
+            border: 1px solid #252533;
+            position: relative;
+            transition: background-color 0.2s;
         }
 
-        .match-status-badge {
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-weight: 700;
+        .match-top {
+            display: flex;
+            justify-content: space-between;
             font-size: 0.75rem;
+            color: var(--text-muted);
+            border-bottom: 1px solid #252533;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
         }
 
-        .status-upcoming { background-color: #e3f2fd; color: #1e88e5; }
-        .status-live { background-color: #ffebee; color: #e53935; }
-        .status-completed { background-color: #e8f5e9; color: #43a047; }
+        .badge-status {
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 700;
+        }
 
-        .match-teams {
+        .bg-upcoming { background: #223e5a; color: #5dade2; }
+        .bg-live { background: #522222; color: #ec7063; animation: blink 1s infinite alternate; }
+        .bg-completed { background: #1d3c29; color: #2ecc71; }
+
+        @keyframes blink { from { opacity: 0.6; } to { opacity: 1; } }
+
+        .match-center {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 0;
         }
 
-        .team {
+        .team-side {
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
             width: 40%;
         }
 
-        .team-logo {
-            width: 45px;
-            height: 45px;
-            background-color: #f1f2f6;
+        .team-avatar {
+            width: 40px;
+            height: 40px;
+            background: #252535;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 800;
-            font-size: 1.2rem;
-            color: var(--primary-color);
-            border: 2px solid #ddd;
-            margin-bottom: 8px;
-        }
-
-        .team-name {
-            font-size: 0.95rem;
-            font-weight: 700;
-        }
-
-        .match-score-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-width: 80px;
-        }
-
-        .score-box {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--dark-color);
-        }
-
-        .score-dash {
-            font-size: 1.2rem;
-            color: #ccc;
-        }
-
-        .vs-badge {
-            font-size: 0.8rem;
-            background-color: #eee;
-            color: #666;
-            padding: 4px 10px;
-            border-radius: 15px;
-            font-weight: 700;
-        }
-
-        /* صفحة القرعة والمستويات */
-        .levels-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .level-card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            overflow: hidden;
-            border-top: 5px solid var(--primary-color);
-        }
-
-        .level-1 { border-top-color: #c0392b; } /* المستوى الأول - أحمر */
-        .level-2 { border-top-color: #2980b9; } /* المستوى الثاني - أزرق */
-        .level-3 { border-top-color: #d35400; } /* المستوى الثالث - برتقالي */
-
-        .level-header {
-            padding: 15px;
-            color: white;
-            font-weight: 700;
-            text-align: center;
+            color: var(--accent-color);
+            border: 1px solid #353545;
+            margin-bottom: 6px;
             font-size: 1.1rem;
         }
 
-        .level-1 .level-header { background-color: #c0392b; }
-        .level-2 .level-header { background-color: #2980b9; }
-        .level-3 .level-header { background-color: #d35400; }
-
-        .teams-list {
-            list-style: none;
-            padding: 10px 0;
-        }
-
-        .team-item {
-            display: flex;
-            align-items: center;
-            padding: 10px 20px;
-            border-bottom: 1px solid #f1f1f1;
-            font-size: 0.95rem;
-        }
-
-        .team-item:last-child {
-            border-bottom: none;
-        }
-
-        .team-num {
-            background-color: #f1f2f6;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
+        .team-lbl {
+            font-size: 0.9rem;
             font-weight: 700;
-            margin-left: 12px;
-            color: #666;
-        }
-
-        /* صفحة معرض الصور */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-
-        .gallery-item {
-            background-color: white;
-            border-radius: 10px;
+            text-align: center;
+            white-space: nowrap;
             overflow: hidden;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.05);
-            position: relative;
-            aspect-ratio: 4/3;
+            text-overflow: ellipsis;
+            max-width: 110px;
         }
 
-        .gallery-placeholder {
-            width: 100%;
-            height: 100%;
-            background-color: #eaeaea;
+        .score-side {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: #999;
+            min-width: 70px;
+        }
+
+        .score-num-box {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #fff;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .vs-text {
+            font-size: 0.75rem;
+            background: #252535;
+            padding: 4px 10px;
+            border-radius: 12px;
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+
+        /* جدول ترتيب الدوري الاحترافي */
+        .table-responsive {
+            overflow-x: auto;
+            background-color: var(--card-color);
+            border-radius: 14px;
+            border: 1px solid #252533;
+        }
+
+        .league-table {
+            width: 100%;
+            border-collapse: collapse;
             text-align: center;
-            padding: 20px;
-            border: 2px dashed #ccc;
+            font-size: 0.85rem;
+            min-width: 500px;
         }
 
-        .gallery-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
+        .league-table th {
+            background-color: #20202c;
+            color: var(--text-muted);
+            font-weight: 700;
+            padding: 12px 8px;
+            font-size: 0.8rem;
+            border-bottom: 1px solid #2d2d3d;
         }
 
-        .gallery-caption {
-            position: absolute;
+        .league-table td {
+            padding: 12px 8px;
+            border-bottom: 1px solid #22222f;
+            font-weight: 500;
+        }
+
+        .league-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .league-table tr:nth-child(-n+4) .rank-cell {
+            color: var(--accent-color); /* تمييز المربع الذهبي */
+            font-weight: 800;
+        }
+
+        .text-right {
+            text-align: right;
+            padding-right: 15px !important;
+        }
+
+        .rank-cell {
+            width: 40px;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+
+        .pts-cell {
+            font-weight: 800;
+            color: #fff;
+            background-color: rgba(255,255,255,0.02);
+        }
+
+        /* شريط التطبيقات السفلي الثابت */
+        .bottom-nav {
+            position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            padding: 10px;
-            font-size: 0.85rem;
-            text-align: center;
+            height: 65px;
+            background-color: var(--card-color);
+            border-top: 1px solid #252533;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.4);
         }
 
-        /* الفوتر */
-        footer {
-            text-align: center;
-            padding: 30px;
-            background-color: var(--dark-color);
-            color: #888;
-            font-size: 0.85rem;
-            border-top: 3px solid var(--secondary-color);
-            margin-top: 50px;
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            width: 33.33%;
+            height: 100%;
+            transition: color 0.2s;
         }
 
-        footer strong {
-            color: #fff;
+        .nav-icon {
+            font-size: 1.25rem;
+            margin-bottom: 2px;
         }
 
-        .footer-social {
-            margin-top: 10px;
-            font-size: 0.8rem;
+        .nav-label {
+            font-size: 0.75rem;
+            font-weight: 700;
         }
 
-        /* التوافق مع الجوال */
-        @media (max-width: 600px) {
-            .header-title { font-size: 1.4rem; }
-            .header-subtitle { font-size: 0.95rem; }
-            .match-card { padding: 15px; }
-            .team-name { font-size: 0.85rem; }
-            .score-box { font-size: 1.4rem; }
-            .timer-unit { min-width: 50px; padding: 6px 10px; }
-            .timer-num { font-size: 1.1rem; }
-            .tab-btn { padding: 12px 15px; font-size: 0.9rem; }
+        .nav-item.active {
+            color: var(--accent-color);
         }
     </style>
 </head>
 <body>
 
-    <!-- الهيدر -->
     <header>
-        <div class="header-subtitle">تحت رعاية جمعية التنمية الأهلية بحلي</div>
-        <div class="header-title">بطولة السلامة السابعة والعشرين لكرة القدم 2026</div>
-        <div class="header-meta">جميع المباريات تلعب على ملعب السلامة بحلي 🏟️</div>
+        <h1>بطولة السلامة السابعة والعشرين بحلي</h1>
+        <p>نظام الدوري العام 2026</p>
     </header>
-
-    <!-- شريط التبويبات الرئيسي -->
-    <nav class="nav-tabs">
-        <button class="tab-btn active" onclick="switchTab('schedule-tab', this)">جدول المباريات</button>
-        <button class="tab-btn" onclick="switchTab('draw-tab', this)">القرعة والمستويات</button>
-        <button class="tab-btn" onclick="switchTab('gallery-tab', this)">التغطية الإعلامية 📸</button>
-    </nav>
 
     <div class="container">
 
-        <!-- القسم الأول: جدول المباريات والنتائج -->
-        <div id="schedule-tab" class="tab-content active">
+        <div id="tab-upcoming" class="tab-content active">
             
-            <!-- الصندوق الذكي لأقرب مباراة قادمة -->
-            <div class="countdown-box" id="countdown-container" style="display: none;">
-                <div class="countdown-title">⏳ يتبقى على انطلاق المباراة القادمة:</div>
-                <div class="countdown-timer">
-                    <div class="timer-unit">
-                        <span class="timer-num" id="days">00</span>
-                        <span class="timer-label">يوم</span>
-                    </div>
-                    <div class="timer-unit">
-                        <span class="timer-num" id="hours">00</span>
-                        <span class="timer-label">ساعة</span>
-                    </div>
-                    <div class="timer-unit">
-                        <span class="timer-num" id="minutes">00</span>
-                        <span class="timer-label">دقيقة</span>
-                    </div>
-                    <div class="timer-unit">
-                        <span class="timer-num" id="seconds">00</span>
-                        <span class="timer-label">ثانية</span>
-                    </div>
+            <div class="countdown-widget" id="countdown-area" style="display: none;">
+                <div class="countdown-title">⏳ تنازلي على المباراة القادمة</div>
+                <div class="timer-display">
+                    <div class="time-block"><span class="time-num" id="d-days">00</span><span class="time-label">يوم</span></div>
+                    <div class="time-block"><span class="time-num" id="d-hours">00</span><span class="time-label">ساعة</span></div>
+                    <div class="time-block"><span class="time-num" id="d-mins">00</span><span class="time-label">دقيقة</span></div>
+                    <div class="time-block"><span class="time-num" id="d-secs">00</span><span class="time-label">ثانية</span></div>
                 </div>
-                <div id="next-match-teams" style="margin-top: 10px; font-weight: bold; font-size: 0.95rem;"></div>
+                <div id="countdown-match-name" style="margin-top: 8px; font-size: 0.8rem; font-weight: bold; color: #ddd;"></div>
             </div>
 
-            <!-- أزرار الفلترة للمباريات -->
-            <div class="sub-filters">
-                <button class="filter-btn active" onclick="filterMatches('all', this)">الكل</button>
-                <button class="filter-btn" onclick="filterMatches('upcoming', this)">القادمة</button>
-                <button class="filter-btn" onclick="filterMatches('completed', this)">النتائج السابقة</button>
-            </div>
-
-            <!-- قائمة المباريات مولدة برمجياً -->
-            <div id="matches-list">
-                <!-- سيتم ملؤها عبر جافاسكريبت -->
-            </div>
-
+            <div id="upcoming-list"></div>
         </div>
 
-        <!-- القسم الثاني: القرعة والمستويات -->
-        <div id="draw-tab" class="tab-content">
-            <h2 style="text-align: center; margin-bottom: 25px; color: var(--primary-color);">توزيع مستويات الفرق بالقرعة</h2>
-            <div class="levels-grid">
-                
-                <!-- المستوى الأول -->
-                <div class="level-card level-1">
-                    <div class="level-header">المستوى الأول (A)</div>
-                    <ul class="teams-list">
-                        <li class="team-item"><span class="team-num">1</span> السحاب</li>
-                        <li class="team-item"><span class="team-num">2</span> السلامة</li>
-                        <li class="team-item"><span class="team-num">3</span> الشعب</li>
-                        <li class="team-item"><span class="team-num">4</span> المجد</li>
-                        <li class="team-item"><span class="team-num">5</span> صفا الأمجاد</li>
-                        <li class="team-item"><span class="team-num">6</span> الرواد</li>
-                        <li class="team-item"><span class="team-num">7</span> الحبيل</li>
-                    </ul>
-                </div>
-
-                <!-- المستوى الثاني -->
-                <div class="level-card level-2">
-                    <div class="level-header">المستوى الثاني (B)</div>
-                    <ul class="teams-list">
-                        <li class="team-item"><span class="team-num">8</span> الجميعات</li>
-                        <li class="team-item"><span class="team-num">9</span> الحزم</li>
-                        <li class="team-item"><span class="team-num">10</span> الصفة</li>
-                        <li class="team-item"><span class="team-num">11</span> المتحد</li>
-                        <li class="team-item"><span class="team-num">12</span> ثلاثاء يبة</li>
-                        <li class="team-item"><span class="team-num">13</span> القوز</li>
-                        <li class="team-item"><span class="team-num">14</span> زحل</li>
-                    </ul>
-                </div>
-
-                <!-- المستوى الثالث -->
-                <div class="level-card level-3">
-                    <div class="level-header">المستوى الثالث (C)</div>
-                    <ul class="teams-list">
-                        <li class="team-item"><span class="team-num">15</span> اتحاد دوقة</li>
-                        <li class="team-item"><span class="team-num">16</span> نجم مليحة</li>
-                        <li class="team-item"><span class="team-num">17</span> الخليج</li>
-                        <li class="team-item"><span class="team-num">18</span> الشارقة</li>
-                        <li class="team-item"><span class="team-num">19</span> الجرد</li>
-                        <li class="team-item"><span class="team-num">20</span> تضامن القنفذة</li>
-                        <li class="team-item"><span class="team-num">21</span> صقلية</li>
-                        <li class="team-item"><span class="team-num">22</span> الوفاق</li>
-                        <li class="team-item"><span class="team-num">23</span> البرك</li>
-                        <li class="team-item"><span class="team-num">24</span> شباب الفلحة</li>
-                        <li class="team-item"><span class="team-num">25</span> الصقر</li>
-                        <li class="team-item"><span class="team-num">26</span> القاع</li>
-                        <li class="team-item"><span class="team-num">27</span> النجم بالحويرس</li>
-                        <li class="team-item"><span class="team-num">28</span> الغزوية</li>
-                    </ul>
-                </div>
-
-            </div>
+        <div id="tab-past" class="tab-content">
+            <div id="past-list"></div>
         </div>
 
-        <!-- القسم الثالث: التغطية الإعلامية (مساحة إياد) -->
-        <div id="gallery-tab" class="tab-content">
-            <h2 style="text-align: center; margin-bottom: 10px; color: var(--primary-color);">معرض البطولة بعدسة إياد</h2>
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 30px;">تغطية حصرية ومباشرة لكل أحداث ومباريات بطولة السلامة 27 بـ حلي</p>
+        <div id="tab-standings" class="tab-content">
+            <div style="margin-bottom: 15px; text-align: center;">
+                <h2 style="font-size: 1.1rem; font-weight: 800; color: var(--accent-color);">جدول ترتيب فرق الدوري آلياً</h2>
+                <p style="font-size: 0.75rem; color: var(--text-muted);">يتم التحديث والترتيب تلقائياً بناءً على نتائج المباريات المسجلة</p>
+            </div>
             
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">
-                        <div class="gallery-icon">📸</div>
-                        <p>قريباً صور الافتتاح</p>
-                        <small>كاميرا Canon EOS 250D</small>
-                    </div>
-                    <div class="gallery-caption">صور الجولة الأولى</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">
-                        <div class="gallery-icon">🎥</div>
-                        <p>ملخصات الفيديو المميزة</p>
-                        <small>مونتاج DaVinci Resolve</small>
-                    </div>
-                    <div class="gallery-caption">لقطات حاسمة</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">
-                        <div class="gallery-icon">🏆</div>
-                        <p>تغطية الجماهير والمنصة</p>
-                        <small>بجودة Lightroom العالية</small>
-                    </div>
-                    <div class="gallery-caption">تفاعل الجماهير بحلي</div>
-                </div>
+            <div class="table-responsive">
+                <table class="league-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th class="text-right">الفريق</th>
+                            <th>لعب</th>
+                            <th>فاز</th>
+                            <th>تعادل</th>
+                            <th>خسر</th>
+                            <th>له</th>
+                            <th>عليه</th>
+                            <th>الفارق</th>
+                            <th class="pts-cell">النقاط</th>
+                        </tr>
+                    </thead>
+                    <tbody id="standings-tbody">
+                        </tbody>
+                </table>
             </div>
         </div>
 
     </div>
 
-    <!-- الفوتر -->
-    <footer>
-        <p>تصميم وتطوير الموقع الإعلامي لبطولة السلامة 27 © 2026</p>
-        <p>التغطية الإعلامية الرسمية بواسطة المصور المعتمد <strong>إياد</strong> 📸</p>
-        <div class="footer-social">تابع حساب التغطيات الرسمي: @tfas331 🕊️</div>
-    </footer>
+    <nav class="bottom-nav">
+        <button class="nav-item active" onclick="handleTabSwitch('tab-upcoming', this)">
+            <div class="nav-icon">📅</div>
+            <div class="nav-label">مباريات قادمة</div>
+        </button>
+        <button class="nav-item" onclick="handleTabSwitch('tab-past', this)">
+            <div class="nav-icon">🏁</div>
+            <div class="nav-label">النتائج السابقة</div>
+        </button>
+        <button class="nav-item" onclick="handleTabSwitch('tab-standings', this)">
+            <div class="nav-icon">🏆</div>
+            <div class="nav-label">ترتيب الدوري</div>
+        </button>
+    </nav>
 
-    <!-- جافا سكريبت التحكم بالجدول التلقائي -->
     <script>
-        // مصفوفة مباريات البطولة بالكامل بناءً على الصورة الثانية
-        // الأوقات بنظام 24 ساعة لسهولة الحساب التلقائي (المباراة الأولى 22:00 والمباراة الثانية 23:30 مساءً)
-        const matchesData = [
-            // الخميس 16 يوليو
-            { id: 1, dateStr: "الخميس 16 يوليو 2026", dateTime: "2026-07-16T22:00:00", team1: "زحل", team2: "اتحاد دوقة", matchNum: "المباراة الأولى (10:00 م)", score1: null, score2: null },
-            { id: 2, dateStr: "الخميس 16 يوليو 2026", dateTime: "2026-07-16T23:30:00", team1: "السحاب", team2: "الغزوية", matchNum: "المباراة الثانية (11:30 م)", score1: null, score2: null },
-            
-            // الجمعة 17 يوليو
-            { id: 3, dateStr: "الجمعة 17 يوليو 2026", dateTime: "2026-07-17T22:00:00", team1: "الرواد", team2: "البرك", matchNum: "المباراة الأولى (10:00 م)", score1: null, score2: null },
-            { id: 4, dateStr: "الجمعة 17 يوليو 2026", dateTime: "2026-07-17T23:30:00", team1: "الحزم", team2: "تضامن القنفذة", matchNum: "المباراة الثانية (11:30 م)", score1: null, score2: null },
-            
-            // السبت 18 يوليو
-            { id: 5, dateStr: "السبت 18 يوليو 2026", dateTime: "2026-07-18T22:00:00", team1: "الجميعات", team2: "صقلية", matchNum: "المباراة الأولى (10:00 م)", score1: null, score2: null },
-            { id: 6, dateStr: "السبت 18 يوليو 2026", dateTime: "2026-07-18T23:30:00", team1: "الحبيل", team2: "الوفاق", matchNum: "المباراة الثانية (11:30 م)", score1: null, score2: null },
-            
-            // الاثنين 20 يوليو
-            { id: 7, dateStr: "الاثنين 20 يوليو 2026", dateTime: "2026-07-20T22:00:00", team1: "المتحد", team2: "الشارقة", matchNum: "المباراة الأولى (10:00 م)", score1: null, score2: null },
-            { id: 8, dateStr: "الاثنين 20 يوليو 2026", dateTime: "2026-07-20T23:30:00", team1: "المجد", team2: "الصقر", matchNum: "المباراة الثانية (11:30 م)", score1: null, score2: null },
-            
-            // الثلاثاء 21 يوليو
-            { id: 9, dateStr: "الثلاثاء 21 يوليو 2026", dateTime: "2026-07-21T22:00:00", team1: "القوز", team2: "نجم مليحة", matchNum: "المباراة الأولى (10:00 م)", score1: null, score2: null },
-            { id: 10, dateStr: "الثلاثاء 21 يوليو 2026", dateTime: "2026-07-21T23:30:00", team1: "السلامة", team2: "النجم بالحويرس", matchNum: "المباراة الثانية (11:30 م)", score1: null, score2: null },
-            
-            // الأربعاء 22 يوليو
-            { id: 11, dateStr: "الأربعاء 22 يوليو 2026", dateTime: "2026-07-22T22:00:00", team1: "ثلاثاء يبة", team2: "الخليج", matchNum: "المباراة الأولى (10:00 م)", score1: null, score2: null },
-            { id: 12, dateStr: "الأربعاء 22 يوليو 2026", dateTime: "2026-07-22T23:30:00", team1: "الشعب", team2: "القاع", matchNum: "المباراة الثانية (11:30 م)", score1: null, score2: null },
-            
-            // الخميس 23 يوليو
-            { id: 13, dateStr: "الخميس 23 يوليو 2026", dateTime: "2026-07-23T22:00:00", team1: "صفا الأمجاد", team2: "شباب الفلحة", matchNum: "المباراة الأولى (10:00 م)", score1: null, score2: null },
-            { id: 14, dateStr: "الخميس 23 يوليو 2026", dateTime: "2026-07-23T23:30:00", team1: "الصفة", team2: "الجرد", matchNum: "المباراة الثانية (11:30 م)", score1: null, score2: null },
-            
-            // الجمعة 24 يوليو
-            { id: 15, dateStr: "الجمعة 24 يوليو 2026", dateTime: "2026-07-24T22:00:00", team1: "الرواد", team2: "الحزم", matchNum: "المباراة الأولى (10:00 م)", score1: null, score2: null },
-            { id: 16, dateStr: "الجمعة 24 يوليو 2026", dateTime: "2026-07-24T23:30:00", team1: "تضامن القنفذة", team2: "البرك", matchNum: "المباراة الثانية (11:30 م)", score1: null, score2: null },
-            
-            // السبت 25 يوليو
-            { id: 17, dateStr: "السبت 25 يوليو 2026", dateTime: "2026-07-25T22:00:00", team1: "صقلية", team2: "الوفاق", matchNum: "المباراة الأولى (10:00 م)", score1: null, score2: null },
-            { id: 18, dateStr: "السبت 25 يوليو 2026", dateTime: "2026-07-25T23:30:00", team1: "الحبيل", team2: "الجميعات", matchNum: "المباراة الثانية (11:30 م)", score1: null, score2: null },
-            
-            // الأحد 26 يوليو
-            { id: 19, dateStr: "الأحد 26 يوليو 2026", dateTime: "2026-07-26T22:00:00", team1: "اتحاد دوقة", team2: "الغزوية", matchNum: "المباراة الأولى (10:00 م)", score1: null, score2: null },
-            { id: 20, dateStr: "الأحد 26 يوليو 2026", dateTime: "2026-07-26T23:30:00", team1: "السحاب", team2: "زحل", matchNum: "المباراة الثانية (11:30 م)", score1: null, score2: null },
-            
-            // الاثنين 27 يوليو
-            { id: 21, dateStr: "الاثنين 27 يوليو 2026", dateTime: "2026-07-27T22:00:00", team1: "الشارقة", team2: "الصقر", matchNum: "المباراة الأولى (10:00 م)", score1: null, score2: null },
-            { id: 22, dateStr: "الاثنين 27 يوليو 2026", dateTime: "2026-07-27T23:30:00", team1: "المجد", team2: "المتحد", matchNum: "المباراة الثانية (11:30 م)", score1: null, score2: null },
-            
-            // الثلاثاء 28 يوليو
-            { id: 23, dateStr: "الثلاثاء 28 يوليو 2026", dateTime: "2026-07-28T22:00:00", team1: "نجم مليحة", team2: "النجم بالحويرس", matchNum: "المباراة الأولى (10:00 م)", score1: null, score2: null },
-            { id: 24, dateStr: "الثلاثاء 28 يوليو 2026", dateTime: "2026-07-28T23:30:00", team1: "السلامة", team2: "القوز", matchNum: "المباراة الثانية (11:30 م)", score1: null, score2: null },
-            
-            // الأربعاء 29 يوليو
-            { id: 25, dateStr: "الأربعاء 29 يوليو 2026", dateTime: "2026-07-29T22:00:00", team1: "الخليج", team2: "القاع", matchNum: "المباراة الأولى (10:00 م)", score1: null, score2: null },
-            { id: 26, dateStr: "الأربعاء 29 يوليو 2026", dateTime: "2026-07-29T23:30:00", team1: "الجرد", team2: "شباب الفلحة", matchNum: "المباراة الثانية (11:30 م)", score1: null, score2: null },
-            
-            // الخميس 30 يوليو
-            { id: 27, dateStr: "الخميس 30 يوليو 2026", dateTime: "2026-07-30T22:00:00", team1: "الشعب", team2: "ثلاثاء يبة", matchNum: "المباراة الأولى (10:00 م)", score1: null, score2: null },
-            { id: 28, dateStr: "الخميس 30 يوليو 2026", dateTime: "2026-07-30T23:30:00", team1: "صفا الأمجاد", team2: "الصفة", matchNum: "المباراة الثانية (11:30 م)", score1: null, score2: null }
+        // مصفوفة الـ 28 فريقاً كاملة المشاركة بالبطولة
+        const allTeamsList = [
+            "السحاب", "السلامة", "الشعب", "المجد", "صفا الأمجاد", "الرواد", "الحبيل",
+            "الجميعات", "الحزم", "الصفة", "المتحد", "ثلاثاء يبة", "القوز", "زحل",
+            "اتحاد دوقة", "نجم مليحة", "الخليج", "الشارقة", "الجرد", "تضامن القنفذة",
+            "صقلية", "الوفاق", "البرك", "شباب الفلحة", "الصقر", "القاع", "النجم بالحويرس", "الغزوية"
         ];
 
-        // لتجربة كود النتائج: يمكنك ملء بعض الأهداف هنا لمباريات انتهت (مثال للتجربة)
-        matchesData[0].score1 = 2; // زحل
-        matchesData[0].score2 = 1; // اتحاد دوقة
-
-        // تبديل الأقسام الرئيسية
-        function switchTab(tabId, btn) {
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            document.querySelectorAll('.tab-btn').forEach(b => {
-                b.classList.remove('active');
-            });
-            document.getElementById(tabId).classList.add('active');
-            btn.classList.add('active');
-        }
-
-        // فلترة المباريات وعرضها
-        let currentFilter = 'all';
-
-        function filterMatches(filter, btnElement) {
-            currentFilter = filter;
-            if (btnElement) {
-                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-                btnElement.classList.add('active');
-            }
-            renderMatches();
-        }
-
-        // وظيفة تحديد حالة المباراة بناءً على الوقت والنتائج
-        function getMatchStatus(match) {
-            const now = new Date();
-            const matchTime = new Date(match.dateTime);
-            const matchDurationMs = 2 * 60 * 60 * 1000; // نفترض أن المباراة تستمر ساعتين
-            const endTime = new Date(matchTime.getTime() + matchDurationMs);
-
-            if (now < matchTime) {
-                return { code: 'upcoming', label: 'قادمة', class: 'status-upcoming' };
-            } else if (now >= matchTime && now <= endTime) {
-                return { code: 'live', label: 'مباشر الآن', class: 'status-live' };
-            } else {
-                return { code: 'completed', label: 'انتهت', class: 'status-completed' };
-            }
-        }
-
-        // بناء وعرض المباريات في واجهة الموقع
-        function renderMatches() {
-            const listContainer = document.getElementById('matches-list');
-            listContainer.innerHTML = '';
-
-            // تجميع المباريات حسب اليوم للترتيب الجمالي
-            const groupedMatches = {};
+        // قاعدة بيانات الـ 28 مباراة بالكامل من البوستر بدقة متناهية
+        // الأوقات بنظام 24 ساعة للحساب التلقائي (المباراة 1: 22:00 م | المباراة 2: 23:30 م)
+        const matchesData = [
+            { id: 1, dateStr: "الخميس 16 يوليو 2026", dateTime: "2026-07-16T22:00:00", team1: "زحل", team2: "اتحاد دوقة", label: "المباراة الأولى", score1: 3, score2: 1 },
+            { id: 2, dateStr: "الخميس 16 يوليو 2026", dateTime: "2026-07-16T23:30:00", team1: "السحاب", team2: "الغزوية", label: "المباراة الثانية", score1: 0, score2: 2 },
             
-            matchesData.forEach(match => {
-                const status = getMatchStatus(match);
-                
-                // تطبيق فلتر المستخدم
-                if (currentFilter === 'upcoming' && status.code === 'completed') return;
-                if (currentFilter === 'completed' && status.code !== 'completed') return;
+            { id: 3, dateStr: "الجمعة 17 يوليو 2026", dateTime: "2026-07-17T22:00:00", team1: "الرواد", team2: "البرك", label: "المباراة الأولى", score1: null, score2: null },
+            { id: 4, dateStr: "الجمعة 17 يوليو 2026", dateTime: "2026-07-17T23:30:00", team1: "الحزم", team2: "تضامن القنفذة", label: "المباراة الثانية", score1: null, score2: null },
+            
+            { id: 5, dateStr: "السبت 18 يوليو 2026", dateTime: "2026-07-18T22:00:00", team1: "الجميعات", team2: "صقلية", label: "المباراة الأولى", score1: null, score2: null },
+            { id: 6, dateStr: "السبت 18 يوليو 2026", dateTime: "2026-07-18T23:30:00", team1: "الحبيل", team2: "الوفاق", label: "المباراة الثانية", score1: null, score2: null },
+            
+            { id: 7, dateStr: "الاثنين 20 يوليو 2026", dateTime: "2026-07-20T22:00:00", team1: "المتحد", team2: "الشارقة", label: "المباراة الأولى", score1: null, score2: null },
+            { id: 8, dateStr: "الاثنين 20 يوليو 2026", dateTime: "2026-07-20T23:30:00", team1: "المجد", team2: "الصقر", label: "المباراة الثانية", score1: null, score2: null },
+            
+            { id: 9, dateStr: "الثلاثاء 21 يوليو 2026", dateTime: "2026-07-21T22:00:00", team1: "القوز", team2: "نجم مليحة", label: "المباراة الأولى", score1: null, score2: null },
+            { id: 10, dateStr: "الثلاثاء 21 يوليو 2026", dateTime: "2026-07-21T23:30:00", team1: "السلامة", team2: "النجم بالحويرس", label: "المباراة الثانية", score1: null, score2: null },
+            
+            { id: 11, dateStr: "الأربعاء 22 يوليو 2026", dateTime: "2026-07-22T22:00:00", team1: "ثلاثاء يبة", team2: "الخليج", label: "المباراة الأولى", score1: null, score2: null },
+            { id: 12, dateStr: "الأربعاء 22 يوليو 2026", dateTime: "2026-07-22T23:30:00", team1: "الشعب", team2: "القاع", label: "المباراة الثانية", score1: null, score2: null },
+            
+            { id: 13, dateStr: "الخميس 23 يوليو 2026", dateTime: "2026-07-23T22:00:00", team1: "صفا الأمجاد", team2: "شباب الفلحة", label: "المباراة الأولى", score1: null, score2: null },
+            { id: 14, dateStr: "الخميس 23 يوليو 2026", dateTime: "2026-07-23T23:30:00", team1: "الصفة", team2: "الجرد", label: "المباراة الثانية", score1: null, score2: null },
+            
+            { id: 15, dateStr: "الجمعة 24 يوليو 2026", dateTime: "2026-07-24T22:00:00", team1: "الرواد", team2: "الحزم", label: "المباراة الأولى", score1: null, score2: null },
+            { id: 16, dateStr: "الجمعة 24 يوليو 2026", dateTime: "2026-07-24T23:30:00", team1: "تضامن القنفذة", team2: "البرك", label: "المباراة الثانية", score1: null, score2: null },
+            
+            { id: 17, dateStr: "السبت 25 يوليو 2026", dateTime: "2026-07-25T22:00:00", team1: "صقلية", team2: "الوفاق", label: "المباراة الأولى", score1: null, score2: null },
+            { id: 18, dateStr: "السبت 25 يوليو 2026", dateTime: "2026-07-25T23:30:00", team1: "الحبيل", team2: "الجميعات", label: "المباراة الثانية", score1: null, score2: null },
+            
+            { id: 19, dateStr: "الأحد 26 يوليو 2026", dateTime: "2026-07-26T22:00:00", team1: "اتحاد دوقة", team2: "الغزوية", label: "المباراة الأولى", score1: null, score2: null },
+            { id: 20, dateStr: "الأحد 26 يوليو 2026", dateTime: "2026-07-26T23:30:00", team1: "السحاب", team2: "زحل", label: "المباراة الثانية", score1: null, score2: null },
+            
+            { id: 21, dateStr: "الاثنين 27 يوليو 2026", dateTime: "2026-07-27T22:00:00", team1: "الشارقة", team2: "الصقر", label: "المباراة الأولى", score1: null, score2: null },
+            { id: 22, dateStr: "الاثنين 27 يوليو 2026", dateTime: "2026-07-27T23:30:00", team1: "المجد", team2: "المتحد", label: "المباراة الثانية", score1: null, score2: null },
+            
+            { id: 23, dateStr: "الثلاثاء 28 يوليو 2026", dateTime: "2026-07-28T22:00:00", team1: "نجم مليحة", team2: "النجم بالحويرس", label: "المباراة الأولى", score1: null, score2: null },
+            { id: 24, dateStr: "الثلاثاء 28 يوليو 2026", dateTime: "2026-07-28T23:30:00", team1: "السلامة", team2: "القوز", label: "المباراة الثانية", score1: null, score2: null },
+            
+            { id: 25, dateStr: "الأربعاء 29 يوليو 2026", dateTime: "2026-07-29T22:00:00", team1: "الخليج", team2: "القاع", label: "المباراة الأولى", score1: null, score2: null },
+            { id: 26, dateStr: "الأربعاء 29 يوليو 2026", dateTime: "2026-07-29T23:30:00", team1: "الجرد", team2: "شباب الفلحة", label: "المباراة الثانية", score1: null, score2: null },
+            
+            { id: 27, dateStr: "الخميس 30 يوليو 2026", dateTime: "2026-07-30T22:00:00", team1: "الشعب", team2: "ثلاثاء يبة", label: "المباراة الأولى", score1: null, score2: null },
+            { id: 28, dateStr: "الخميس 30 يوليو 2026", dateTime: "2026-07-30T23:30:00", team1: "صفا الأمجاد", team2: "الصفة", label: "المباراة الثانية", score1: null, score2: null }
+        ];
 
-                if (!groupedMatches[match.dateStr]) {
-                    groupedMatches[match.dateStr] = [];
-                }
-                groupedMatches[match.dateStr].push({ ...match, status });
-            });
+        // تنقل سريع بين الألسنة/التبويبات السفلى
+        function handleTabSwitch(tabId, btnElement) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            btnElement.classList.add('active');
+            window.scrollTo(0, 0);
+        }
 
-            const days = Object.keys(groupedMatches);
-            if (days.length === 0) {
-                listContainer.innerHTML = '<div style="text-align: center; padding: 30px; color: #999;">لا توجد مباريات مطابقة للفلتر المحدد حالياً.</div>';
-                return;
+        // تحديد الحالة الزمنية للمباراة ديناميكياً
+        function checkMatchStatus(match) {
+            const now = new Date();
+            const start = new Date(match.dateTime);
+            const duration = 2 * 60 * 60 * 1000; // نفترض افتراضياً مدة المباراة ساعتين بالشوطين والراحة
+            const end = new Date(start.getTime() + duration);
+
+            // لو وضعت نتيجة يدوياً تعتبر منتهية مباشرة
+            if (match.score1 !== null && match.score2 !== null) {
+                return { code: 'completed', text: 'انتهت', badge: 'bg-completed' };
             }
 
-            days.forEach(day => {
-                let dayHtml = `
-                    <div class="day-section">
-                        <div class="day-header">
-                            <span>📅 ${day}</span>
-                            <span class="badge">${groupedMatches[day].length} مباراة</span>
-                        </div>
-                `;
+            if (now < start) {
+                return { code: 'upcoming', text: 'قادمة', badge: 'bg-upcoming' };
+            } else if (now >= start && now <= end) {
+                return { code: 'live', text: 'مباشر الآن ⚽', badge: 'bg-live' };
+            } else {
+                return { code: 'completed', text: 'انتهت', badge: 'bg-completed' };
+            }
+        }
 
-                groupedMatches[day].forEach(m => {
-                    // تحديد عرض النتيجة
-                    let scoreHtml = `<div class="vs-badge">VS</div>`;
-                    if (m.status.code === 'completed' || m.status.code === 'live') {
-                        const s1 = m.score1 !== null ? m.score1 : '-';
-                        const s2 = m.score2 !== null ? m.score2 : '-';
-                        scoreHtml = `
-                            <div class="score-box">
-                                <span>${s1}</span>
-                                <span class="score-dash">-</span>
-                                <span>${s2}</span>
-                            </div>
-                        `;
-                    }
+        // دالة رندرة وتوليد وعرض القوائم مقسمة لتبويبين
+        function renderMatchesLayout() {
+            const upcomingDiv = document.getElementById('upcoming-list');
+            const pastDiv = document.getElementById('past-list');
+            
+            upcomingDiv.innerHTML = '';
+            pastDiv.innerHTML = '';
 
-                    dayHtml += `
-                        <div class="match-card ${m.status.code}">
-                            <div class="match-info">
-                                <span>🏆 ${m.matchNum}</span>
-                                <span class="match-status-badge ${m.status.class}">${m.status.label}</span>
-                            </div>
-                            <div class="match-teams">
-                                <div class="team">
-                                    <div class="team-logo">${m.team1[0]}</div>
-                                    <div class="team-name">${m.team1}</div>
-                                </div>
-                                <div class="match-score-section">
-                                    ${scoreHtml}
-                                </div>
-                                <div class="team">
-                                    <div class="team-logo">${m.team2[0]}</div>
-                                    <div class="team-name">${m.team2}</div>
-                                </div>
-                            </div>
-                        </div>
-                    `;
+            // تجميع المباريات حسب الأيام ليكون الترتيب منسقاً وسهلاً
+            const groupedUpcoming = {};
+            const groupedPast = {};
+
+            matchesData.forEach(match => {
+                const status = checkMatchStatus(match);
+                const matchObj = { ...match, status };
+
+                if (status.code === 'upcoming') {
+                    if (!groupedUpcoming[match.dateStr]) groupedUpcoming[match.dateStr] = [];
+                    groupedUpcoming[match.dateStr].push(matchObj);
+                } else {
+                    // المباشر والمنتهي يذهبان لقسم السابقة والنتائج
+                    if (!groupedPast[match.dateStr]) groupedPast[match.dateStr] = [];
+                    groupedPast[match.dateStr].push(matchObj);
+                }
+            });
+
+            // 1. توليد واجهة القادمة
+            const upcomingDays = Object.keys(groupedUpcoming);
+            if (upcomingDays.length === 0) {
+                upcomingDiv.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);">انتهت جميع مباريات البطولة 🎉</div>';
+            } else {
+                upcomingDays.forEach(day => {
+                    let html = `<div class="day-group"><div class="day-title">📅 ${day}</div>`;
+                    groupedUpcoming[day].forEach(m => {
+                        html += createCardTemplate(m);
+                    });
+                    html += `</div>`;
+                    upcomingDiv.innerHTML += html;
                 });
+            }
 
-                dayHtml += `</div>`;
-                listContainer.innerHTML += dayHtml;
+            // 2. توليد واجهة السابقة والنتائج
+            const pastDays = Object.keys(groupedPast).reverse(); // إظهار الأحدث بالنتائج أولاً
+            if (pastDays.length === 0) {
+                pastDiv.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);">لم تبدأ أي مباراة بالبطولة بعد ⏳</div>';
+            } else {
+                pastDays.forEach(day => {
+                    let html = `<div class="day-group"><div class="day-title">🏁 ${day}</div>`;
+                    groupedPast[day].forEach(m => {
+                        html += createCardTemplate(m);
+                    });
+                    html += `</div>`;
+                    pastDiv.innerHTML += html;
+                });
+            }
+        }
+
+        // تصميم بطاقة المباراة الموحد
+        function createCardTemplate(m) {
+            let scoreView = `<div class="vs-text">VS</div>`;
+            if (m.status.code === 'completed' || m.status.code === 'live') {
+                const s1 = m.score1 !== null ? m.score1 : '-';
+                const s2 = m.score2 !== null ? m.score2 : '-';
+                scoreView = `
+                    <div class="score-num-box">
+                        <span>${s1}</span>
+                        <span style="font-size:1.1rem; color:#444;">-</span>
+                        <span>${s2}</span>
+                    </div>
+                `;
+            }
+
+            // استخراج الوقت بالساعات والدقائق للعرض النظيف للمستخدم
+            const timeObj = new Date(m.dateTime);
+            const timeStr = timeObj.toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' });
+
+            return `
+                <div class="match-card">
+                    <div class="match-top">
+                        <span>🏆 ${m.label} (${timeStr})</span>
+                        <span class="badge-status ${m.status.badge}">${m.status.text}</span>
+                    </div>
+                    <div class="match-center">
+                        <div class="team-side">
+                            <div class="team-avatar">${m.team1[0]}</div>
+                            <div class="team-lbl">${m.team1}</div>
+                        </div>
+                        <div class="score-side">
+                            ${scoreView}
+                        </div>
+                        <div class="team-side">
+                            <div class="team-avatar">${m.team2[0]}</div>
+                            <div class="team-lbl">${m.team2}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // دالة الحساب الآلي الذكية بالكامل لترتيب الدوري الدوري
+        function calculateLeagueStandings() {
+            // إنشاء كائن إحصائيات لكل فريق
+            const standings = {};
+            allTeamsList.forEach(team => {
+                standings[team] = { name: team, played: 0, wins: 0, draws: 0, losses: 0, gf: 0, ga: 0, gd: 0, pts: 0 };
+            });
+
+            // معالجة المباريات المنتهية فقط لحساب الجدول
+            matchesData.forEach(m => {
+                const status = checkMatchStatus(m);
+                // الحساب يبدأ بمجرد وجود أرقام للأهداف
+                if (m.score1 !== null && m.score2 !== null) {
+                    const t1 = m.team1;
+                    const t2 = m.team2;
+                    const s1 = parseInt(m.score1);
+                    const s2 = parseInt(m.score2);
+
+                    standings[t1].played += 1;
+                    standings[t2].played += 1;
+                    standings[t1].gf += s1;
+                    standings[t1].ga += s2;
+                    standings[t2].gf += s2;
+                    standings[t2].ga += s1;
+
+                    if (s1 > s2) {
+                        standings[t1].wins += 1;
+                        standings[t1].pts += 3;
+                        standings[t2].losses += 1;
+                    } else if (s1 < s2) {
+                        standings[t2].wins += 1;
+                        standings[t2].pts += 3;
+                        standings[t1].losses += 1;
+                    } else {
+                        standings[t1].draws += 1;
+                        standings[t1].pts += 1;
+                        standings[t2].draws += 1;
+                        standings[t2].pts += 1;
+                    }
+                }
+            });
+
+            // تحويل الكائن لمصفوفة وحساب الفارق الإجمالي للأهداف للأولوية بالترتيب الرسمي
+            const standingsArray = Object.values(standings);
+            standingsArray.forEach(t => {
+                t.gd = t.gf - t.ga;
+            });
+
+            // الفرز والتصنيف التلقائي للترتيب (النقاط أولاً، الفارق ثانياً، الأهداف المسجلة ثالثاً)
+            standingsArray.sort((a, b) => {
+                if (b.pts !== a.pts) return b.pts - a.pts;
+                if (b.gd !== a.gd) return b.gd - a.gd;
+                return b.gf - a.gf;
+            });
+
+            // طباعة الجدول النهائي في تبويب الترتيب
+            const tbody = document.getElementById('standings-tbody');
+            tbody.innerHTML = '';
+
+            standingsArray.forEach((team, index) => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td class="rank-cell">${index + 1}</td>
+                        <td class="text-right" style="font-weight: 700;">${team.name}</td>
+                        <td>${team.played}</td>
+                        <td style="color:#2ecc71;">${team.wins}</td>
+                        <td style="color:#f1c40f;">${team.draws}</td>
+                        <td style="color:#e74c3c;">${team.losses}</td>
+                        <td>${team.gf}</td>
+                        <td>${team.ga}</td>
+                        <td dir="ltr" style="color:${team.gd > 0 ? '#2ecc71' : team.gd < 0 ? '#e74c3c' : '#aaa'}">${team.gd > 0 ? '+' + team.gd : team.gd}</td>
+                        <td class="pts-cell">${team.pts}</td>
+                    </tr>
+                `;
             });
         }
 
-        // تشغيل مؤقت العد التنازلي لأقرب مباراة قادمة
-        function initCountdown() {
+        // عداد تنازلي متطور لأقرب لقاء مقبل بالبطولة
+        function runLiveTimer() {
             const now = new Date();
-            // البحث عن أول مباراة قادمة
-            const nextMatch = matchesData.find(m => new Date(m.dateTime) > now);
+            const nextMatch = matchesData.find(m => new Date(m.dateTime) > now && m.score1 === null);
 
             if (!nextMatch) {
-                document.getElementById('countdown-container').style.display = 'none';
+                document.getElementById('countdown-area').style.display = 'none';
                 return;
             }
 
-            document.getElementById('countdown-container').style.display = 'block';
-            document.getElementById('next-match-teams').innerHTML = `⚽ المباراة القادمة: ${nextMatch.team1} ضد ${nextMatch.team2}`;
+            document.getElementById('countdown-area').style.display = 'block';
+            document.getElementById('countdown-match-name').textContent = `⚽ المواجهة المنتظرة: ${nextMatch.team1} 🆚 ${nextMatch.team2}`;
 
-            const targetTime = new Date(nextMatch.dateTime).getTime();
+            const target = new Date(nextMatch.dateTime).getTime();
 
-            function updateTimer() {
-                const currentTime = new Date().getTime();
-                const difference = targetTime - currentTime;
+            function compute() {
+                const current = new Date().getTime();
+                const diff = target - current;
 
-                if (difference <= 0) {
-                    // إذا بدأ وقت المباراة، نعيد التحديث ليظهر كحالة "مباشر" ونغير المباراة المستهدفة في العد التنازلي
-                    renderMatches();
-                    initCountdown();
+                if (diff <= 0) {
+                    renderMatchesLayout();
+                    calculateLeagueStandings();
+                    runLiveTimer();
                     return;
                 }
 
-                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
 
-                document.getElementById('days').textContent = String(days).padStart(2, '0');
-                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+                document.getElementById('d-days').textContent = String(d).padStart(2, '0');
+                document.getElementById('d-hours').textContent = String(h).padStart(2, '0');
+                document.getElementById('d-mins').textContent = String(m).padStart(2, '0');
+                document.getElementById('d-secs').textContent = String(s).padStart(2, '0');
             }
-
-            updateTimer();
-            setInterval(updateTimer, 1000);
+            compute();
+            setInterval(compute, 1000);
         }
 
-        // تشغيل الوظائف عند فتح الصفحة
+        // تشغيل الوظائف البرمجية المتكاملة مباشرة عند تحميل الشاشة
         window.onload = function() {
-            renderMatches();
-            initCountdown();
+            renderMatchesLayout();
+            calculateLeagueStandings();
+            runLiveTimer();
         };
     </script>
 </body>
