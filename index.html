@@ -3,164 +3,352 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نادي الصقلية الرياضي | القحمة - عسير</title>
+    <title>الموقع الرسمي | نادي الصقلية الرياضي</title>
+    
+    <!-- خطوط جوجل (Cairo) للمظهر الرسمي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- مكتبة الأيقونات العالمية FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        :root { 
-            --gold: #d4af37; 
-            --black: #000; 
-            --dark-gray: #111;
-            --white: #fff; 
+        :root {
+            --primary-gold: #d4af37;
+            --dark-gold: #aa8c2c;
+            --black: #050505;
+            --dark-grey: #111111;
+            --light-grey: #f4f4f4;
+            --white: #ffffff;
         }
-        body { 
-            margin: 0; 
-            font-family: 'Arial', sans-serif; 
-            background-color: var(--black); 
-            color: var(--white); 
-            scroll-behavior: smooth;
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
         }
-        
-        /* القائمة العلوية */
-        nav { 
-            padding: 20px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center;
-            border-bottom: 2px solid var(--gold); 
-            background-color: rgba(0,0,0,0.9);
-            position: sticky;
+
+        body {
+            background-color: var(--dark-grey);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* شريط التنقل العلوي - Header */
+        header {
+            background-color: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 1000;
+            border-bottom: 2px solid var(--primary-gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
-        .logo-text { font-size: 1.5rem; font-weight: bold; color: var(--gold); }
-        nav a { color: var(--white); text-decoration: none; margin: 0 10px; font-weight: bold; transition: 0.3s;}
-        nav a:hover { color: var(--gold); }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-container img {
+            height: 70px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-gold);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--primary-gold);
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .logo-text span {
+            font-size: 0.8rem;
+            color: #aaa;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav a:hover {
+            color: var(--primary-gold);
+        }
+
+        .btn-academy {
+            background-color: var(--primary-gold);
+            color: var(--black);
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-weight: 900;
+        }
         
-        /* القسم الرئيسي (الهيرو) */
-        .hero { 
-            text-align: center; 
-            padding: 80px 20px; 
-            background: radial-gradient(circle, #222 0%, #000 100%);
+        .btn-academy:hover {
+            background-color: var(--dark-gold);
+            color: var(--black);
         }
-        .hero img { 
-            width: 220px; 
-            border: 3px solid var(--gold); 
-            border-radius: 50%; 
-            box-shadow: 0px 0px 20px rgba(212, 175, 55, 0.5);
+
+        /* القسم الرئيسي - Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(5,5,5,0.6), rgba(5,5,5,1)), 
+                        url('https://images.unsplash.com/photo-1518605368461-1e1252270117?q=80&w=2074&auto=format&fit=crop') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero h2 {
+            font-size: 4rem;
+            color: var(--white);
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .hero h2 span {
+            color: var(--primary-gold);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #ccc;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        /* مركز المباريات - Match Center */
+        .match-center {
+            background-color: var(--black);
+            border: 1px solid var(--primary-gold);
+            border-radius: 15px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+            transform: translateY(-50px);
+            position: relative;
+            z-index: 10;
+            width: 80%;
+            margin: 0 auto;
+            justify-content: space-between;
+        }
+
+        .match-info {
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .match-info h3 { color: var(--primary-gold); font-size: 1.2rem; margin-bottom: 5px;}
+        .match-info .date { font-size: 0.9rem; color: #888; margin-bottom: 15px;}
+        .score { font-size: 2.5rem; font-weight: 900; letter-spacing: 5px;}
+
+        .team {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 150px;
+        }
+        
+        .team img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #fff;
+            padding: 5px;
+        }
+        
+        .team span {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* قسم الأقسام (الأخبار، البطولات، الأكاديمية) */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--white);
+            margin: 50px 0 30px;
+            font-weight: 900;
+        }
+        .section-title span { color: var(--primary-gold); }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 5%;
+            margin-bottom: 80px;
+        }
+
+        .feature-card {
+            background: #1a1a1a;
+            border-radius: 10px;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 4px solid var(--primary-gold);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: #222;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--primary-gold);
             margin-bottom: 20px;
         }
-        h1 { color: var(--gold); font-size: 3rem; margin-bottom: 10px;}
-        .subtitle { font-size: 1.2rem; color: #ccc; margin-bottom: 30px; }
-        
-        /* الأقسام العامة */
-        section { padding: 60px 20px; text-align: center; border-bottom: 1px solid #333; }
-        h2 { color: var(--gold); font-size: 2.5rem; margin-bottom: 30px; }
-        
-        /* قسم الإنجازات والبطولات */
-        .achievements-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .achievement-card {
-            background-color: var(--dark-gray);
-            border: 1px solid var(--gold);
-            border-radius: 10px;
-            padding: 20px;
-            width: 300px;
-            box-shadow: 0px 4px 10px rgba(0,0,0,0.5);
-            transition: transform 0.3s;
-        }
-        .achievement-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--white);
-        }
-        .achievement-card h3 { color: var(--gold); font-size: 1.5rem; }
-        .achievement-year { font-weight: bold; color: #ccc; margin-bottom: 10px; display: block; }
 
-        /* الشبكة للخدمات */
-        .grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .card { background: var(--dark-gray); padding: 20px; width: 250px; border-left: 4px solid var(--gold); text-align: right;}
-        .card h3 { color: var(--gold); margin-top: 0; }
-        
-        footer { padding: 20px; text-align: center; background-color: #111; color: #777; }
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #aaa;
+            font-size: 1rem;
+        }
+
+        /* الفوتر - تذييل الموقع */
+        footer {
+            background-color: #050505;
+            border-top: 2px solid #333;
+            padding: 40px 5%;
+            text-align: center;
+        }
+
+        .social-icons {
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-gold);
+        }
+
+        footer p {
+            color: #666;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
 
-<nav>
-    <div class="logo-text">نادي الصقلية</div>
-    <div>
-        <a href="#about">عن النادي</a>
-        <a href="#achievements">الإنجازات</a>
-        <a href="#services">الأنشطة</a>
-        <a href="#contact">التواصل</a>
-    </div>
-</nav>
+    <!-- الشريط العلوي الاحترافي -->
+    <header>
+        <div class="logo-container">
+            <img src="https://i.ibb.co/ktCbdvd/7a132e19-a4fe-4659-8109-afd158c829ed.jpg" alt="شعار نادي الصقلية">
+            <div class="logo-text">
+                <h1>نادي الصقلية</h1>
+                <span>AL SAQALIYA CLUB</span>
+            </div>
+        </div>
+        <nav>
+            <a href="#"><i class="fas fa-home"></i> الرئيسية</a>
+            <a href="#"><i class="fas fa-newspaper"></i> المركز الإعلامي</a>
+            <a href="#"><i class="fas fa-trophy"></i> البطولات</a>
+            <a href="#"><i class="fas fa-users"></i> الفريق الأول</a>
+            <a href="#" class="btn-academy"><i class="fas fa-futbol"></i> أكاديمية النادي</a>
+        </nav>
+    </header>
 
-<section class="hero">
-    <img src="https://i.ibb.co/ktCbdvd/7a132e19-a4fe-4659-8109-afd158c829ed.jpg" alt="شعار نادي الصقلية">
-    <h1>نادي الصقلية الرياضي</h1>
-    <p class="subtitle">منارة الرياضة والتميز في مركز القحمة بمنطقة عسير</p>
-</section>
+    <!-- الواجهة الرئيسية وصورة الملعب -->
+    <section class="hero">
+        <h2>نادي <span>الصقلية</span> السعودي</h2>
+        <p>الموقع الرسمي للكيان الرياضي - فخر القحمة وعراقة عسير</p>
+    </section>
 
-<section id="about">
-    <h2>عن النادي</h2>
-    <p style="max-width: 800px; margin: auto; line-height: 1.8; font-size: 1.1rem;">
-        نادي الصقلية هو كيان رياضي طموح يقع في قلب مركز القحمة بمنطقة عسير. نهدف إلى اكتشاف المواهب الرياضية وصناعة أبطال المستقبل وفق أسس رياضية احترافية، مع الالتزام التام بالروح الرياضية وتمثيل المنطقة خير تمثيل في المحافل والبطولات.
-    </p>
-</section>
+    <!-- مركز المباريات (المعول عليه في الأندية الكبيرة) -->
+    <div class="match-center">
+        <div class="team">
+            <img src="https://i.ibb.co/ktCbdvd/7a132e19-a4fe-4659-8109-afd158c829ed.jpg" alt="الصقلية">
+            <span>الصقلية</span>
+        </div>
+        
+        <div class="match-info">
+            <h3>المباراة القادمة - كأس المنطقة</h3>
+            <div class="date"><i class="far fa-calendar-alt"></i> الخميس، 20 يوليو 2026 | 08:00 مساءً</div>
+            <div class="score">VS</div>
+        </div>
 
-<section id="achievements">
-    <h2>سجل الإنجازات والبطولات</h2>
-    <p style="margin-bottom: 30px; color: #ccc;">أبرز المشاركات والبطولات التي حققها النادي في منطقة عسير (نصوص تجريبية يمكنك تعديلها):</p>
-    <div class="achievements-container">
-        <div class="achievement-card">
-            <h3>بطل دورة القحمة الرمضانية</h3>
-            <span class="achievement-year">2023</span>
-            <p>تحقيق المركز الأول وكأس البطولة بعد أداء استثنائي طوال فترة المنافسات.</p>
-        </div>
-        <div class="achievement-card">
-            <h3>بطولة رابطة الهواة بالساحل</h3>
-            <span class="achievement-year">2024</span>
-            <p>المشاركة الفعالة والوصول للمراكز المتقدمة لتمثيل مركز القحمة بين فرق المنطقة.</p>
-        </div>
-        <div class="achievement-card">
-            <h3>كأس السوبر لفرق عسير</h3>
-            <span class="achievement-year">2025</span>
-            <p>حصد جائزة أفضل فريق منظم، ومشاركة مشرفة لنجوم النادي.</p>
-        </div>
-    </div>
-</section>
-
-<section id="services">
-    <h2>أنشطتنا وبرامجنا</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>الفريق الأول</h3>
-            <p>تجهيز وإعداد الفريق الأول للمشاركة في المنافسات الرسمية والودية على مستوى المنطقة.</p>
-        </div>
-        <div class="card">
-            <h3>أكاديمية الناشئين</h3>
-            <p>صقل المهارات الفردية واكتشاف المواهب الشابة وتأسيسهم كروياً للمستقبل.</p>
-        </div>
-        <div class="card">
-            <h3>التنظيم الرياضي</h3>
-            <p>تنظيم واستضافة البطولات المحلية والمباريات الودية لتعزيز التنافس الرياضي.</p>
+        <div class="team">
+            <!-- صورة شعار فريق افتراضي كمثال -->
+            <img src="https://cdn-icons-png.flaticon.com/512/33/33736.png" alt="الخصم" style="padding: 15px;">
+            <span>الفريق المنافس</span>
         </div>
     </div>
-</section>
 
-<section id="contact">
-    <h2>انضم إلينا / تواصل معنا</h2>
-    <p>للاستفسارات، وتنسيق المباريات، أو طلبات الانضمام للفريق:</p>
-    <p style="font-size: 1.2rem; color: var(--gold);">📍 الموقع: منطقة عسير - مركز القحمة</p>
-    <p>📧 الإيميل: info@alsaqaliya.com</p>
-</section>
+    <!-- الأقسام الرسمية للأكاديمية والنادي -->
+    <h2 class="section-title">مرافق <span>ومنجزات</span> الكيان</h2>
+    <div class="features">
+        <div class="feature-card">
+            <i class="fas fa-medal"></i>
+            <h3>سجل الأبطال</h3>
+            <p>استعرض تاريخ نادي الصقلية الحافل بالبطولات والإنجازات الرياضية على مستوى المنطقة الساحلية.</p>
+        </div>
+        
+        <div class="feature-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>الأكاديمية المعتمدة</h3>
+            <p>برامج تأسيسية للفئات السنية تحت إشراف نخبة من المدربين المعتمدين لتخريج مواهب المستقبل.</p>
+        </div>
+        
+        <div class="feature-card">
+            <i class="fas fa-shopping-bag"></i>
+            <h3>المتجر الرسمي</h3>
+            <p>احصل على الأطقم الرسمية، ومعدات التشجيع الخاصة بنادي الصقلية بجودة عالية.</p>
+        </div>
+    </div>
 
-<footer>
-    <p>جميع الحقوق محفوظة © 2026 نادي الصقلية الرياضي بالقحمة</p>
-</footer>
+    <!-- الفوتر الرسمي -->
+    <footer>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-snapchat-ghost"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>جميع الحقوق محفوظة © 2026 الموقع الرسمي لنادي الصقلية الرياضي - مسجل ومعتمد</p>
+    </footer>
 
 </body>
 </html>
